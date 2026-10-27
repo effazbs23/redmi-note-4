@@ -16,12 +16,11 @@ Why things were built this way, for whoever continues on this branch. Newest las
 
 ## Workflow and happy path
 ### Workflow
-HR user opens an employee, goes to the new Payroll tab and enters a numeric Size. The value is stored on the employee (hr.employee.size, Float).
+HR manager opens an employee, goes to the existing Payroll tab and enters a numeric Size (hr.employee.size, Float), shown next to the Schedule group.
 
 ### Happy path
-1. Open http://localhost:8090 and go to Employees.
-2. Open Johnny Goods.
-3. Click the new "Payroll" tab (last tab on the form).
-4. Enter 42 in the Size field and save. Expect the value to stay after saving and reloading.
-5. Try a decimal such as 8.5. Expect it to save too.
-Not covered: Size is not in the list view, search filters or reports. Undo: use Revert on the site for this branch.
+1. Open http://localhost:8090, go to Employees, open Johnny Goods.
+2. Click the Payroll tab (only one should exist now).
+3. Find the Size field beside the Schedule section.
+4. Enter 42, save, reload. Expect 42 to remain. Decimals like 8.5 also save.
+Note: the Payroll tab is visible to HR Managers only (existing Odoo restriction). Not covered: list view, filters, reports. Undo: Revert on the site.
