@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrp_production_form_inherit_output_log" model="ir.ui.view">
+        <field name="name">mrp.production.form.inherit.output.log</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="output_log" string="Production Output">
+                    <group>
+                        <group>
+                            <field name="output_logged_qty"/>
+                            <field name="output_progress"/>
+                        </group>
+                    </group>
+                    <field name="output_log_ids" readonly="state in ('done', 'cancel')">
+                        <list editable="bottom">
+                            <field name="log_date"/>
+                            <field name="quantity"/>
+                            <field name="user_id"/>
+                            <field name="note"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

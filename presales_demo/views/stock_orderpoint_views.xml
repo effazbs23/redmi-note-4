@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_orderpoint_tree_inherit_suggestions" model="ir.ui.view">
+        <field name="name">stock.warehouse.orderpoint.list.inherit.suggestions</field>
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree_editable"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_max_qty']" position="after">
+                <field name="avg_daily_consumption" optional="show" readonly="1"/>
+                <field name="suggested_min_qty" optional="show" readonly="1"/>
+                <field name="suggested_max_qty" optional="show" readonly="1"/>
+                <button name="action_apply_suggestions" type="object" icon="fa-magic" title="Apply suggested Min/Max" invisible="not id or avg_daily_consumption &lt;= 0"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_apply_orderpoint_suggestions" model="ir.actions.server">
+        <field name="name">Apply Suggested Min/Max</field>
+        <field name="model_id" ref="stock.model_stock_warehouse_orderpoint"/>
+        <field name="binding_model_id" ref="stock.model_stock_warehouse_orderpoint"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">records.action_apply_suggestions()</field>
+    </record>
+</odoo>
