@@ -14,6 +14,15 @@ class StockWarehouseOrderpoint(models.Model):
     suggested_max_qty = fields.Float(
         string='Suggested Max', compute='_compute_suggestions')
 
+    def _presales_param(self, key, default):
+        """Read a system parameter by key (no get_param helper in Odoo 20)."""
+        param = self.env['ir.config_parameter'].sudo().search(
+            [('key', '=', key)], limit=1)
+        try:
+            return float(param.value) if param else default
+        except (TypeError, ValueError):
+            return default
+
     def _compute_suggestions(self):
         """Statistical suggestion (not AI) from past outgoing consumption.
 
@@ -23,16 +32,8 @@ class StockWarehouseOrderpoint(models.Model):
         Look-back days and safety factor are system parameters
         presales_demo.consumption_days (90) and presales_demo.safety_factor (1.2).
         """
-        params = self.env['ir.config_parameter'].sudo()
-        try:
-            days = int(params.get_param('presales_demo.consumption_days', 90))
-        except ValueError:
-            days = 90
-        try:
-            safety = float(params.get_param('presales_demo.safety_factor', 1.2))
-        except ValueError:
-            safety = 1.2
-        days = max(days, 1)
+        days = max(int(self._presales_param('presales_demo.consumption_days', 90)), 1)
+        safety = self._presales_param('presales_demo.safety_factor', 1.2)
         since = fields.Datetime.now() - timedelta(days=days)
         Move = self.env['stock.move']
         for orderpoint in self:

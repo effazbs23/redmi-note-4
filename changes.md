@@ -16,3 +16,7 @@ One entry per commit, newest last. Added automatically when code is written thro
 - `presales_demo/views/hr_employee_views.xml`
 - `presales_demo/views/mrp_production_views.xml`
 - `presales_demo/views/stock_orderpoint_views.xml`
+
+## 2026-10-27 12:55 UTC · effazbs23
+[FIX] presales_demo: read config params without get_param (Odoo 20)
+- `presales_demo/models/stock_orderpoint.py`
