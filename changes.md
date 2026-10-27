@@ -24,3 +24,7 @@ One entry per commit, newest last. Added automatically when code is written thro
 ## 2026-10-27 12:56 UTC · effazbs23
 [FIX] presales_demo: use Material icon for apply-suggestions button
 - `presales_demo/views/stock_orderpoint_views.xml`
+
+## 2026-10-27 12:56 UTC · effazbs23
+[FIX] presales_demo: text label for apply-suggestions button
+- `presales_demo/views/stock_orderpoint_views.xml`
