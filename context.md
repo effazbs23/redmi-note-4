@@ -13,3 +13,15 @@ In the presales_demo addon, inherit hr.employee and add a Char field "size" (lab
 
 ## Decisions
 Why things were built this way, for whoever continues on this branch. Newest last.
+
+## Workflow and happy path
+### Workflow
+HR user opens an employee, goes to the new Payroll tab and enters a numeric Size. The value is stored on the employee (hr.employee.size, Float).
+
+### Happy path
+1. Open http://localhost:8090 and go to Employees.
+2. Open Johnny Goods.
+3. Click the new "Payroll" tab (last tab on the form).
+4. Enter 42 in the Size field and save. Expect the value to stay after saving and reloading.
+5. Try a decimal such as 8.5. Expect it to save too.
+Not covered: Size is not in the list view, search filters or reports. Undo: use Revert on the site for this branch.
