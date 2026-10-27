@@ -9,7 +9,7 @@
                 <field name="avg_daily_consumption" optional="show" readonly="1"/>
                 <field name="suggested_min_qty" optional="show" readonly="1"/>
                 <field name="suggested_max_qty" optional="show" readonly="1"/>
-                <button name="action_apply_suggestions" type="object" icon="fa-magic" title="Apply suggested Min/Max" invisible="not id or avg_daily_consumption &lt;= 0"/>
+                <button name="action_apply_suggestions" type="object" icon="auto_fix_high" title="Apply suggested Min/Max" invisible="not id or avg_daily_consumption &lt;= 0"/>
             </xpath>
         </field>
     </record>
